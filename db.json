@@ -1,0 +1,33 @@
+{
+    "user": [
+        {
+            "id": "1",
+            "name": "Pedro",
+            "email": "pepe@gmail.com"
+        },
+        {
+            "id": "2",
+            "name": "Mateus",
+            "email": "mateus@gmail.com"
+        },
+        {
+            "id": "3",
+            "name": "Célia",
+            "email": "lia.cé@gmail.com"
+        }
+    ],
+    "products":[
+        {
+            "id":"1",
+            "name":"Bola de plástico",
+            "quantity": 26,
+            "price": 18.90
+        },
+        {
+            "id":"2",
+            "name":"Vassoura",
+            "quantity": 38,
+            "price": 9.99
+        }
+    ]
+}

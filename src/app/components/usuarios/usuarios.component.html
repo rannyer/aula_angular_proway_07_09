@@ -1,0 +1,8 @@
+@if(usuarios){
+    <div *ngFor="let usuario of usuarios; let i = index" >
+         <p>{{usuario.id}} {{usuario.name}} - {{usuario.email}}</p>
+         <button (click)="deleteUser(usuario.id!)" >❌</button>
+    </div>
+}
+
+<button (click)="getUsers()" >Carregar Usuarios</button>
