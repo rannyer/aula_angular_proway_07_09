@@ -1,8 +1,19 @@
+<form  action="" [formGroup]="userForm" (submit)="addUser()">
+    <label for="name">Nome:</label>
+    <input type="text" id="name" formControlName="name"   placeholder="Nome">
+
+    <label for="email">Email:</label>
+    <input type="text" id="email" formControlName="email"  placeholder="seuemail@exemplo.com">
+    
+    <button type="submit">Cadastrar</button>
+</form>
+
+
+
 @if(usuarios){
-    <div *ngFor="let usuario of usuarios; let i = index" >
-         <p>{{usuario.id}} {{usuario.name}} - {{usuario.email}}</p>
-         <button (click)="deleteUser(usuario.id!)" >❌</button>
+    <div *ngFor="let usuario of usuarios; let i = index" class="item" >
+         <app-user [user]="usuario" ></app-user>
+         <button  (click)="deleteUser(usuario.id!)">❌</button>
     </div>
 }
 
-<button (click)="getUsers()" >Carregar Usuarios</button>

@@ -1,0 +1,14 @@
+.user{
+    display: flex;
+    width: 500px;
+    justify-content: space-around;
+    background-color: rgb(243, 243, 243);
+    /* box-shadow: 10px 1px 1px rgb(45, 45, 45); */
+    height: 45px;
+    align-items: center;
+    border-radius: 20px;
+    margin-bottom: 10px;
+}
+.user .id{
+    text-decoration: underline;
+}

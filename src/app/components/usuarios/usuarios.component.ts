@@ -1,31 +1,60 @@
-import { Component } from '@angular/core';
-import {CommonModule} from '@angular/common'
+import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common'
 import { UserService } from '../../services/user.service';
 import { User } from '../../models/user';
+import { UserComponent } from "../user/user.component";
+import { ReactiveFormsModule, FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-usuarios',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, UserComponent, ReactiveFormsModule],
   templateUrl: './usuarios.component.html',
   styleUrl: './usuarios.component.css'
 })
-export class UsuariosComponent {
+export class UsuariosComponent implements OnInit {
 
-  i:number = 0
-  usuarios:User[] = [] 
-  constructor(private userService: UserService){}
+  i: number = 0
+  usuarios: User[] = []
+  userForm!: FormGroup 
+  user!:User 
 
-  getUsers(){
+  constructor(private userService: UserService) {
+
+   this.userForm = new FormGroup({
+    name: new FormControl(''),
+    email: new FormControl('')
+  })
+
+  }
+
+
+  ngOnInit(): void {
+    this.getUsers()
+  }
+
+  getUsers() {
     this.userService.getAllUsers().subscribe(
       {
-        next: res =>this.usuarios = res ,
+        next: res => this.usuarios = res,
         error: err => console.log(err)
       }
     )
   }
 
-  deleteUser(id:string){
+  addUser() {
+    this.userService.addUser(this.userForm.value).subscribe({
+      next: res => {
+        alert("Usuario cadastrado com sucesso!")
+        this.getUsers()
+        this.userForm.reset()
+      },
+      error: err => alert(err)
+    })
+  }
+
+
+  deleteUser(id: string) {
     this.userService.deleteUser(id).subscribe({
       next: () => {
         // alert("Usuario deletado com sucesso!")
