@@ -1,0 +1,31 @@
+<form action="" [formGroup]="productForm" (submit)="addProduct()">
+    <label for="name">Nome: </label>
+    <input type="text" id="name" formControlName="name">
+
+    <br>
+
+    <label for="price">Preço: </label>
+    <input type="number" id="price" formControlName="price">
+
+    <br>
+
+    <label for="quantity">Quantidade: </label>
+    <input type="number" id="quantitu" formControlName="quantity">
+
+    <br>
+
+    @if(updateAvaliable){
+
+        <button type="button" (click)="updateProduct()">Atualizar</button>
+    }@else{
+        <button type="submit">Cadastrar</button>
+    }
+</form>
+<h1>-----------------------------------------------------------------</h1>
+@if(products){
+    <div class="prod" *ngFor="let prod of products">
+        <app-product [product]="prod"></app-product>
+        <button (click)="deleteProduct(prod.id)">❌</button>
+        <button (click)="onEdit(prod)">Atualizar</button>
+    </div>
+}   

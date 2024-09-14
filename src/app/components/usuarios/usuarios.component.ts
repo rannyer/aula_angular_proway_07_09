@@ -4,11 +4,11 @@ import { UserService } from '../../services/user.service';
 import { User } from '../../models/user';
 import { UserComponent } from "../user/user.component";
 import { ReactiveFormsModule, FormGroup, FormControl } from '@angular/forms';
-
+import {CdkDrag, CdkDropList } from '@angular/cdk/drag-drop'
 @Component({
   selector: 'app-usuarios',
   standalone: true,
-  imports: [CommonModule, UserComponent, ReactiveFormsModule],
+  imports: [CdkDropList, CdkDrag,CommonModule, UserComponent, ReactiveFormsModule],
   templateUrl: './usuarios.component.html',
   styleUrl: './usuarios.component.css'
 })
